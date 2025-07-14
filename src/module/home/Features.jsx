@@ -11,10 +11,10 @@ function Features() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
-              Made by Rehund
+              Made by Sophie
             </h2>
             <p className="text-xl text-base-content/70 max-w-2xl mx-auto">
-              Tools by Rehund
+              Tools by Sophie
             </p>
           </div>
 

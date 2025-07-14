@@ -1,4 +1,4 @@
-import { CheckSquare2 } from "lucide-react";
+import { SquareCheck } from "lucide-react";
 import React from "react";
 import Container from "../../components/Container";
 
@@ -7,7 +7,7 @@ function HeaderToDo() {
     <Container>
       <div className="text-center mt-12 mb-8 animate-slide-down">
         <h1 className="text-4xl font-bold text-base-content mb-2 flex items-center justify-center gap-3">
-          <CheckSquare2 className="h-10 w-10 text-primary" />
+          <SquareCheck strokeWidth={2} color="#605dff" className="h-10 w-10 text-primary" />
           To-Do List
         </h1>
         <p className="text-base-content/70 text-lg">
