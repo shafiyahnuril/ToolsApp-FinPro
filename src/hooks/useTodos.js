@@ -16,6 +16,15 @@ export function useTodos() {
     } catch (error) {
       console.error("Error parsing todos from localStorage:", error);
     }
+    // Default data jika tidak ada di localStorage
+    return [
+      {
+        id: "1",
+        text: "Belajar Java",
+        completed: false,
+        createdAt: new Date("2025-01-10T08:56:00"),
+      },
+    ];
   });
 
   //   logic simpan data ke localstorage setiap kali todos mutasi

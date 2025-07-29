@@ -3,6 +3,7 @@ import { DollarSign } from "lucide-react";
 import { Menu } from "lucide-react";
 import { Heart } from "lucide-react";
 import { Home } from "lucide-react";
+import { Settings } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
@@ -46,9 +47,10 @@ function Navbar() {
             })}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl font-bold">
-          <CheckSquare className="h-6 w-6 mr-2" />
-          Tools App
+        <Link to="/" className="btn btn-ghost text-lg sm:text-xl font-bold">
+          <CheckSquare className="h-5 w-5 sm:h-6 sm:w-6 mr-1 sm:mr-2" />
+          <span className="hidden sm:inline">Tools App</span>
+          <span className="sm:hidden">Tools</span>
         </Link>
       </div>
 
@@ -62,12 +64,12 @@ function Navbar() {
                   to={item.path}
                   className={`flex items-center gap-2 transition-all duration-200 ${
                     location.pathname === item.path
-                      ? "bg-primary text-primary-context"
+                      ? "bg-primary text-primary-content"
                       : "hover:bg-base-200"
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  {item.label}
+                  <span className="hidden xl:inline">{item.label}</span>
                 </Link>
               </li>
             );
@@ -76,7 +78,10 @@ function Navbar() {
       </div>
 
       <div className="navbar-end">
-        <div className="badge badge-primary badge-sm">Oti Acad</div>
+        <div className="badge badge-primary badge-sm">
+          <span className="hidden sm:inline">Oti Acad</span>
+          <span className="sm:hidden">OA</span>
+        </div>
       </div>
     </div>
   );

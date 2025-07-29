@@ -4,7 +4,7 @@ function Container({className, children}) {
   return (
     <section
         className={cn(
-            `mx-auto flex w-full max-w-(--breakpoint-2xl) flex-col gap-4 px-4 py-4 sm:px-8`,
+            `mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8`,
             className
         )}
     >

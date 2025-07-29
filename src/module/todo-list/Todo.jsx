@@ -3,38 +3,76 @@ import { useState } from "react";
 import Stats from "./Stats";
 import AddTodo from "./AddTodo";
 import Filter from "./Filter";
-// import TodoList from "./TodoList";
-// import ClearButton from "./ClearButton";
+import TodoList from "./TodoList";
+import ClearButton from "./ClearButton";
 import { useTodos } from "../../hooks/useTodos";
 
 function Todo() {
-  const { todos, setTodos, addTodo, toggleTodo, deleteTodo } = useTodos();
+  const { todos, addTodo, toggleTodo, deleteTodo, clearCompleted } = useTodos();
   const [newTodo, setNewTodo] = useState("");
   const [filter, setFilter] = useState("all");
 
+  const filteredTodos = useMemo(() => {
+    switch (filter) {
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "completed":
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
+  }, [todos, filter]);
+
+  const stats = useMemo(() => {
+    const total = todos.length;
+    const completed = todos.filter((todo) => todo.completed).length;
+    const active = total - completed;
+    return { total, completed, active };
+  }, [todos]);
+
   const handleAddTodo = () => {
-    addTodo(newTodo);
-    setNewTodo("");
+    if (newTodo.trim()) {
+      addTodo(newTodo);
+      setNewTodo("");
+    }
   };
-  
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      addTodo();
+      handleAddTodo();
     }
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      
-      {/* Add your Todo components here */}
-      <Stats active={0} completed={0} total={0} />
-      <AddTodo newTodo={newTodo}
+    <>
+      {/* Stats */}
+      <Stats
+        active={stats.active}
+        completed={stats.completed}
+        total={stats.total}
+      />
+      {/* Add Todo */}
+      <AddTodo
+        newTodo={newTodo}
         setNewTodo={setNewTodo}
         addTodo={handleAddTodo}
-        handleKeyPress={handleKeyPress} />
-      <Filter filter={filter} setFilter={setFilter} />
-    </div>
+        handleKeyPress={handleKeyPress}
+      />
+      {/* Filter */}
+      <Filter stats={stats} filter={filter} setFilter={setFilter} />
+      {/* Todo List */}
+      <TodoList
+        filteredTodos={filteredTodos}
+        filter={filter}
+        todos={todos}
+        stats={stats}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+      />
+      {/* Clear Completed Button */}
+      <ClearButton stats={stats} clearCompleted={clearCompleted} />
+    </>
   );
-} 
+}
 
 export default Todo;
