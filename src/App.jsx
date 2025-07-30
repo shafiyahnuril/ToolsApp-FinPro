@@ -4,6 +4,8 @@ import Home from "./pages/home/Home";
 import TodoListPage from "./pages/todo-list/TodoList";
 import ExpenseTrackerPage from "./pages/expense-tracker/ExpenseTrackerPage";
 import HealthTrackerPage from "./pages/health-tracker/HealthTrackerPage";
+import Login from "./pages//Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="todolist" element={<TodoListPage />} />
           <Route path="expense-tracker" element={<ExpenseTrackerPage />} />
           <Route path="health-tracker" element={<HealthTrackerPage />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="Register" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>

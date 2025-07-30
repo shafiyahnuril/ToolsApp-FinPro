@@ -76,12 +76,11 @@ function Navbar() {
           })}
         </ul>
       </div>
-
       <div className="navbar-end">
-        <div className="badge badge-primary badge-sm">
-          <span className="hidden sm:inline">Oti Acad</span>
-          <span className="sm:hidden">OA</span>
-        </div>
+        <Link to="/Login" className="badge badge-primary badge-sm cursor-pointer">
+          <span className="hidden sm:inline">Login</span>
+          <span className="sm:hidden">Lgn</span>
+        </Link>
       </div>
     </div>
   );

@@ -10,10 +10,10 @@ function Features() {
       <Container>
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-base-content mb-4">
-            Made by Sophie
+            Made by Sophie & Aly
           </h2>
           <p className="text-lg sm:text-xl text-base-content/70 max-w-2xl mx-auto px-4">
-            Tools by Sophie
+            Tools by Sophie & Aly
           </p>
         </div>
 
