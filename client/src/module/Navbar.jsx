@@ -3,13 +3,14 @@ import { DollarSign } from "lucide-react";
 import { Menu } from "lucide-react";
 import { Heart } from "lucide-react";
 import { Home } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import {AppContext} from "../context/AppContext";
+import { AppContext } from "../context/AppContext";
 import React, { useContext } from "react";
 
 function Navbar() {
   const location = useLocation();
-  const { isLoggedIn, userData } = useContext(AppContext);
+  const { isLoggedIn, userData, logout, isLoading } = useContext(AppContext);
 
   const navbarItems = [
     { path: "/", label: "Home", icon: Home },
@@ -17,6 +18,10 @@ function Navbar() {
     { path: "/expense-tracker", label: "Expense Tracker", icon: DollarSign },
     { path: "/health-tracker", label: "Health Tracker", icon: Heart },
   ];
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-lg sticky top-0 z-50">
@@ -78,16 +83,54 @@ function Navbar() {
           })}
         </ul>
       </div>
+      
       <div className="navbar-end">
-        {isLoggedIn && userData ? (
-          <span className="badge badge-primary badge-sm cursor-default">
-            {userData.email}
-          </span>
+        {isLoading ? (
+          <div className="loading loading-spinner loading-sm"></div>
+        ) : isLoggedIn && userData ? (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
+                <span className="text-sm font-bold">
+                  {userData.email ? userData.email.charAt(0).toUpperCase() : 'U'}
+                </span>
+              </div>
+            </label>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <li className="menu-title">
+                <span>Signed in as</span>
+              </li>
+              <li>
+                <span className="text-sm font-medium">{userData.email}</span>
+              </li>
+              <li>
+                <button 
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 text-error hover:bg-error/10"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
         ) : (
-          <Link to="/Login" className="badge badge-primary badge-sm cursor-pointer">
-            <span className="hidden sm:inline">Login</span>
-            <span className="sm:hidden">Lgn</span>
-          </Link>
+          <div className="flex gap-2">
+            <Link 
+              to="/Login" 
+              className="btn btn-ghost btn-sm"
+            >
+              <span className="hidden sm:inline">Login</span>
+              <span className="sm:hidden">Login</span>
+            </Link>
+            <Link 
+              to="/Register" 
+              className="btn btn-primary btn-sm"
+            >
+              <span className="hidden sm:inline">Register</span>
+              <span className="sm:hidden">Sign Up</span>
+            </Link>
+          </div>
         )}
       </div>
     </div>
