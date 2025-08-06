@@ -90,8 +90,8 @@ function Navbar() {
         ) : isLoggedIn && userData ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
-                <span className="text-sm font-bold">
+              <div className="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
+                <span className="text-sm font-bold flex items-center justify-center h-full w-full leading-none">
                   {userData.email ? userData.email.charAt(0).toUpperCase() : 'U'}
                 </span>
               </div>
@@ -102,6 +102,14 @@ function Navbar() {
               </li>
               <li>
                 <span className="text-sm font-medium">{userData.email}</span>
+              </li>
+               <li>
+                <Link 
+                  to="/email-verify"
+                  className="flex items-center gap-2 text-info hover:bg-info/10"
+                >
+                  Verify Email
+                </Link>
               </li>
               <li>
                 <button 

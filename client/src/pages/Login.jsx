@@ -102,7 +102,7 @@ const Login = () => {
               <input type="checkbox" className="checkbox checkbox-xs" />
               <label className="text-white text-sm">Remember me?</label>
             </div>
-            <Link to='' className="text-orange-400 hover:underline text-sm">Forgot password?</Link>
+            <Link to='/reset-password' className="text-orange-400 hover:underline text-sm">Forgot password?</Link>
           </div>
           
           {message && (

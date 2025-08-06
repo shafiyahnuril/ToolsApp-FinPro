@@ -12,7 +12,7 @@ const port = process.env.PORT || 4000;
 connectDB();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://toolsapp-finpro.vercel.app'],
     credentials: true
 }));
 app.use(express.json());

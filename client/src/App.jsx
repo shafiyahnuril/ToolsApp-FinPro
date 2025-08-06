@@ -8,6 +8,8 @@ import HealthTrackerPage from "./pages/health-tracker/HealthTrackerPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AppContext } from "./context/AppContext";
+import EmailVerify from "./pages/EmailVerify";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   const { isLoading } = useContext(AppContext);
@@ -36,6 +38,8 @@ function App() {
         {/* Legacy routes for backward compatibility */}
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Register />} />
+        <Route path="email-verify" element={<EmailVerify />} />
+        <Route path="reset-password" element={<ResetPassword />} />
       </Route>
     </Routes>
   );
